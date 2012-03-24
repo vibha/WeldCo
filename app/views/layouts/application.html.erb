@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Weldco</title>
+  <%= stylesheet_link_tag    "weldoco", "theme_grey", "" %>
+  <%= javascript_include_tag "application" %>
+
+  <%= csrf_meta_tags %>
+</head>
+<body>
+	<% flash.each do |name, msg| %>
+  		<%= content_tag :div, msg, :id => "flash_#{name}" %>
+	<% end %>
+	
+	<div class="page" style=" background:none;">
+		<!-- Header -->
+	  
+		<div id="shell-header-navigation">
+			<div id="navigation">
+				<div class="topbar">
+					<div class="topbar-inner">
+						<div class="container">
+							<% if current_user.present? %>
+								<ul class="setting-navigation nav secondary-nav">
+									<li class="dropdown" data-dropdown="dropdown">
+										<% @str = "<span id='header_nav_username'>" + current_user.first_name + "</span>" + "<b class='caret'>&nbsp;</b>" %>
+										<%= link_to (raw @str), "#", {:class => "dropdown-toggle", "data-toggle" =>"dropdown" } %>
+										<ul class="dropdown-menu">
+											<li><%= link_to "Change Language", "#" %></li>
+											<li class="divider">&nbsp;</li>
+											<li><%= link_to "Change Password", "#" %></li>
+											<li class="divider">&nbsp;</li>
+											<li><%= link_to "Sign Out", logout_path %></li>
+										</ul>
+									</li>
+								</ul>
+								<ul class="nav" id="user_top_header">
+									<li class="hasDD">
+										<% @str = "<span>" +  image_tag('home_1.png', {:size => "15x15", :id => "dashboard_link", :class => "home_icon selected" }) + "&nbsp;&nbsp;&nbsp;" + "</span>" %>
+										<%= link_to (raw @str), login_path %>
+									</li>
+									<li class="dropdown" data-dropdown="dropdown">
+										<% @str = "Clients" + "<b class='caret'>&nbsp;</b>" %>
+										<%= link_to (raw @str), login_path, {:class => "dropdown-toggle", "data-toggle" =>"dropdown", :id => "profile_link"}%>
+										<ul class="dropdown-menu">
+											<li><%= link_to "Add Client", "#" %></li>
+											<li class="divider">&nbsp;</li>
+											<li><%= link_to "Edit Clients", "#" %></li>
+											<li class="divider">&nbsp;</li>
+											<li><%= link_to "Add ContactPersons", "#" %></li>
+										</ul>
+		      						</li>
+									<li class="dropdown" data-dropdown="dropdown">
+										<% @str = "Projects" + "<b class='caret'>&nbsp;</b>" %>
+										<%= link_to (raw @str), login_path, {:class => "dropdown-toggle", "data-toggle" =>"dropdown", :id => "profile_link"}%>
+										<ul class="dropdown-menu">
+											<li><%= link_to "Add Project", "#" %></li>
+											<li class="divider">&nbsp;</li>
+											<li><%= link_to "Edit Project", "#" %></li>
+											<li class="divider">&nbsp;</li>
+											<li><%= link_to "Add ContactPersons", "#" %></li>
+										</ul>
+		      						</li>
+									<li class="dropdown">
+										<% @str = "Test Methods" + "<b class='caret'>&nbsp;</b>" %>
+										<%= link_to (raw @str), login_path, {:class => "dropdown-toggle", "data-toggle" =>"dropdown", :id => "profile_link"}%>
+		      						</li>
+									<li class="dropdown">
+										<% @str = "Inspectors" + "<b class='caret'>&nbsp;</b>" %>
+										<%= link_to (raw @str), login_path, {:class => "dropdown-toggle", "data-toggle" =>"dropdown", :id => "profile_link"}%>
+		      						</li>
+									<li class="dropdown">
+										<% @str = "Equipment" + "<b class='caret'>&nbsp;</b>" %>
+										<%= link_to (raw @str), login_path, {:class => "dropdown-toggle", "data-toggle" =>"dropdown", :id => "profile_link"}%>
+		      						</li>
+								</ul>
+							<% else %>
+								<ul class="nav" id="user_top_header">
+			    					<li>
+										<%= link_to "Login", login_path, {:class => "selected"}%>
+			    					</li>
+			  					</ul>
+							<% end %>					
+		  					<div class="clearfloat"></div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div id="shell-header">
+		    	<div style="margin-bottom: 15px;overflow: hidden;">
+					<% if current_user%>
+					<h1 id="domain_logo_img">
+						<%= link_to(image_tag('login/Copy-of-ROBOTS-WELD-No6-2.jpg', {:size => "70x90" }), "#") %>
+					</h1>
+					<% end %>
+		    	</div>
+		    	<div class="clearfloat"></div>
+		  		<!-- submenu section -->
+		        <div id="sub-navigation">
+					<% if current_user%>
+						<ul>
+							<li><%= link_to "My Clients", "#" %></li>
+							<li><%= link_to "Add a new Client", new_client_path, {:class=> "selected"} %></li>
+						</ul>
+					<% end %>
+		        </div>
+		    </div>
+
+		  </div>
+
+		  <div class="cl"></div>
+		  <!-- Header End -->
+		      <div class="body login_page_body">
+		        <!-- right column -->
+		        <!-- here's our main content -->
+		        <div class="main">
+		          <style type="text/css">
+		  div.content-wrapper{
+		    background:#fff;
+		    background:-webkit-gradient(linear,left top,left bottom,color-stop(0%,#fff),color-stop(100%,#ddd));
+		    background:-webkit-linear-gradient(top,#fff 0,#ddd 100%);
+		    background:-moz-linear-gradient(top,#fff 0,#ddd 100%);
+		    background:-ms-linear-gradient(top,#fff 0,#ddd 100%);
+		    background:-o-linear-gradient(top,#fff 0,#ddd 100%);
+		    background:linear-gradient(top,#fff 0,#ddd 100%);
+		    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff',endColorstr='#dddddd',GradientType=0);
+		    border:solid 1px #ccc;
+		    -webkit-box-shadow:0 1px 0 rgba(0,0,0,.1);
+		    -moz-box-shadow:0 1px 0 rgba(0,0,0,.1);
+		    box-shadow:0 1px 0 rgba(0,0,0,.1);
+		    border-radius: 4px;
+		  }
+		  .userId_box input[type="text"], .userId_box input[type="password"]{
+		    border: 1px solid #CCCCCC;
+		    box-shadow: 0 1px 0 #EEEEEE inset, 0 1px 0 #FFFFFF;
+		  }
+		  hr.top-seperator {
+		    border-bottom: 1px solid #E2E2E2;
+		    border-top: medium none;
+		    clear: both;
+		    color: red;
+		    margin: 0 -20px 25px;
+		    width: 400px;
+		  }
+		  span.rcContainer label {
+		    color: #999999;
+		    text-shadow: 0 1px 0 rgba(255, 255, 255, 1);
+		  }
+		</style>
+
+		
+		
+		<%= yield %>
+		
+		</div>
+		</div>
+		</div>
+		
+		  	<div class="clearfloat"></div>
+			</div></div>
+
+	  	</div>
+	  	<div class="foot foot_languages">
+
+	      <!--	<div class="languages"><span>Languages</span><span class="beta">(Beta) :</span></div>-->
+	      	<div class="left">
+				<a href="/locale/en" class="language">About Us</a><span>|</span><a href="/locale/de" class="language">Our Services</a><span>|</span><a href="/locale/es" class="language">Contact Us</a><span>|</span><a href="/locale/fr" class="language">Portfolio</a><span>|</span><a href="/locale/nl" class="language">Careers</a><span>|</span><a href="/locale/tr" class="language">Blog</a>
+		   </div>
+	      	<div class="right">
+
+	      	</div>
+
+		
+	</div>
+	
+</body>
+<script>$(document).ready(function () { $("#topbar-container").dropdown(); }); $("body").bind("click", function (e) { $('.dropdown-toggle, .menu').parent("li").removeClass("open"); }); $(".dropdown-toggle, .menu").click(function (e) { var $li = $(this).parent("li").toggleClass('open'); return false; }); </script>
+</html>

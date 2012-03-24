@@ -1,0 +1,72 @@
+<!-- start of container -->
+<div class="login_container">
+  
+  <div class="mobile_wrapper">
+	<p class="image_weldco"><%= link_to(image_tag('login/Copy-of-ROBOTS-WELD-No6-2.jpg', {:size => "410x270" }), "#") %></p>
+
+      <%#= link_to(image_tag('images1.jpg'), "#", {:height => "470px", :width => "510px"}) %> 
+      <center>
+
+          <div class="get_mangospring_mobile">
+            <a href="/ce/pulse/mkt/iphone_download"><h3>WeldCo</h3></a>
+          </div>
+
+      </center>
+  </div>
+
+  <div id="" class="content-wrapper">
+    <div id="login_box" class="">
+	
+		<%= form_tag sessions_path, {:id => "frm_login"} do %>
+	
+      <!-- <form method="post" action="#" id="frm_login" no-ajax="true"> -->
+       <!-- <input type="hidden" id="user_email_id" name="user_email_id" value=""/> -->
+        <div>
+          <h2 class="login_title">Log in to your<span class="domain_name"> WeldCo!!</span> user account</h2>
+          <hr class="top-seperator"/>
+          <div id="gbl_error_signin" class="error_status" style="display: none"></div>
+          <p class="userId_box">
+	
+			<%#= label_tag :email, nil, :class => "user_id_pwd" %>
+	
+            <label for="emailId" class="user_id_pwd">Login ID</label>
+
+			<%= text_field_tag :loginId, params[:loginId], {:maxlength => 60, :class => "txtField", :id => "user_id" } %>
+
+       <!--   <input type="text" maxlength="60" id="user_id" name="user_id" class="txtField" value="" /> -->
+
+          </p>
+          <p class="userId_box">
+	
+			<%#= label_tag :password, nil, :class => "user_id_pwd" %>
+	
+           <label for="pwd" class="user_id_pwd">Password</label>
+
+			<%= password_field_tag :password, nil, :maxlength => 20, :id => "password", :class => "txtField" %>
+
+<!--            <input type="password" maxlength="20" id="password" name="password" value="" class="txtField" /><br/> -->
+
+            <a class="lightBlue_link fgt_pwd" href="/ce/pulse/user/login/show_forgot_password">Forgot Password?</a>
+
+            <span class="clearfloat"></span>
+          </p>
+          <p class="userId_box chkbox" style="margin-top: 5px;">
+            <span class="rcContainer">
+				<%= check_box_tag :remember_me, 1, params[:remember_me], {:id=> "remember_me", :class => "rc remember_me", :checked => "checked"} %>
+				<%= label_tag :remember_me %>
+	
+            <!--  <input type="checkbox" id="remember_me" name="remember_me" class="rc remember_me" checked="checked"  />
+              <label for="remember_me" class="keep_logged_in">Keep me logged in</label> -->
+            </span>
+            <span class="clearfloat"></span>
+          </p>
+          <p class="signin_btn">
+		   
+				<%= submit_tag "Log in", {:class => "actionbutton loginBtn actionblue"} %>
+	
+          <!--  <button class="actionbutton loginBtn actionblue" type="submit"><span><span class=''>Login</span></span></button> -->
+          </p>          
+        </div>
+		<% end %>
+     <!-- </form> -->
+
