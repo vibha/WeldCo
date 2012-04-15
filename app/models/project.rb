@@ -1,0 +1,25 @@
+class Project < ActiveRecord::Base
+    
+  has_one :project_manager, :source => :user, :conditions => "user_type='project manager'", :through => :project_manager_projects_record, :dependent => :destroy
+  has_one :project_manager_projects_record
+  has_many :systems
+  belongs_to :client
+  
+  has_one :client_contact_person, :class_name => "User", :conditions => "user_type='client contact person'", :dependent => :destroy
+  has_one :class_society_contact_person, :class_name => "User", :conditions => "user_type='class society contact person'", :dependent => :destroy
+  has_one :welding_coordinator, :class_name => "User", :conditions => "user_type='welding coordinator'", :dependent => :destroy
+  
+  accepts_nested_attributes_for :project_manager_projects_record
+  accepts_nested_attributes_for :client_contact_person
+  accepts_nested_attributes_for :class_society_contact_person
+  accepts_nested_attributes_for :welding_coordinator
+
+  validates_uniqueness_of :name
+  validates :client_id, :presence => true
+  
+  validate do |project|
+    project.errors[:base] << "Project name can't be blank" if project.name.blank?
+    project.errors[:base] << "Project description can't be blank" if project.description.blank?
+  end
+
+end

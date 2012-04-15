@@ -1,15 +1,22 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
-   "http://www.w3.org/TR/html4/strict.dtd">
+class UserMailer < ActionMailer::Base
+  default from: "from@example.com"
 
-<html lang="en">
-<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<title>user_mailer</title>
-	<meta name="generator" content="TextMate http://macromates.com/">
-	<meta name="author" content="nitin malhotra">
-	<!-- Date: 2012-03-23 -->
-</head>
-<body>
+  # Subject can be set in your I18n file at config/locales/en.yml
+  # with the following lookup:
+  #
+  #   en.user_mailer.reset_password_email.subject
+  #
+#  def reset_password_email
+ #   @greeting = "Hi"
 
-</body>
-</html>
+  #  mail to: "to@example.org"
+  #end
+  
+  def reset_password_email(user)
+    @user = user
+    @url  = "http://localhost:3000/password_resets/#{user.reset_password_token}/edit"
+    mail(:to => user.email,
+         :subject => "Your password has been reset")
+  end
+  
+end

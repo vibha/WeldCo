@@ -1,0 +1,193 @@
+<table cellpadding="0" cellspacing="0" border="0" id="create_project_tbl" class="twoColumnTbl">      
+
+  <tr>
+    <td class="leftGray" width='55%'>Select Client Name: <span class="mandatory">*</span></td>
+    <td>
+		<%= f.select :client_id, Client.all.collect {|p| [p.name, p.id]}, {:include_blank => true}, :class=> "txtfield", :maxlength => "100" %>
+	</td>
+  </tr>
+
+  <tr>
+    <td class="leftGray" width='55%'>Project Name: <span class="mandatory">*</span></td>
+    <td>
+		<%= f.text_field :name, :class=> "txtfield", :maxlength => "100" %>
+	</td>
+  </tr>
+    
+    <tr>
+      <td class="leftGray">Description:<span class="mandatory">*</span></td>
+      <td>
+    	 <%= f.text_area :description, :class=> "txtfield", :maxlength => "100" %>
+	  </td>
+  	</tr>
+
+
+	  <tr>
+	    <td class="norm-head" id="personal-info">Project Manager Details</td>
+	    <td></td>
+	  </tr>
+
+	  <tr>
+	   <td class="leftGray" width='55%'> Manager Name<span class="mandatory">*</span>:</td>
+	   <td>
+			<%= f.fields_for "project_manager_projects_record", @project.project_manager_projects_record do |cp| %>
+				<%= cp.select :user_id, admin_users.collect {|p| [p.name, p.id]}, {:include_blank => false}, :class=> "txtfield", :maxlength => "100" %>
+				<%= cp.hidden_field :project_id, :value => @project.id %>
+			<% end %>
+	   </td>
+	  </tr>
+	  
+	  <tr>
+	    <td class="norm-head" id="personal-info">System Details</td>
+	    <td></td>
+	  </tr>
+	  
+	  <tr>
+	   <td class="leftGray" width='55%'> Add System</td>
+	   <td>
+			<%= f.fields_for "systems", @project.systems do |cp| %>
+				<%= cp.text_field :name, :class=> "txtfield", :maxlength => "100" %>
+				<%#= cp.hidden_field :project_id, :value => @project.id %>
+			<% end %>
+	   </td>
+	  </tr>
+
+	  <tr>
+	    <td class="norm-head" id="personal-info"> Welding Coordinator Details</td>
+	    <td></td>
+	  </tr>
+
+	  <tr>
+	   <td class="leftGray" width='55%'> Name<span class="mandatory">*</span>:</td>
+	   <td>
+			<%= f.fields_for "welding_coordinator", @project.welding_coordinator do |cp| %>
+				<%= cp.text_field :name, :class=> "txtfield", :maxlength => "100" %>
+				<%= cp.hidden_field :user_type, :value => "welding coordinator" %>
+			<% end %>
+	   </td>
+	  </tr>
+
+	<tr>
+	  <td class="leftGray" width='55%'> Email<span class="mandatory">*</span>:</td>
+	  <td>
+			<%= f.fields_for "welding_coordinator", @project.welding_coordinator do |cp| %>
+				<%= cp.text_field :email, :class=> "txtfield", :maxlength => "100" %>
+			<% end %>
+		</td>
+	</tr>
+
+	<tr>
+	  <td class="leftGray" width='55%'> Phone:</td>
+	  <td>
+			<%= f.fields_for "welding_coordinator", @project.welding_coordinator do |cp| %>
+				<%= cp.text_field :phone, :class=> "txtfield", :maxlength => "100" %>
+			<% end %>
+		</td>
+	</tr>
+
+	<tr>
+	  <td class="leftGray" width='55%'> Address:</td>
+	  <td>
+			<%= f.fields_for "welding_coordinator", @project.welding_coordinator do |cp| %>
+				<%= cp.text_area :address, :class=> "txtfield", :maxlength => "100" %>
+			<% end %>
+		</td>
+	</tr>
+
+	
+	  <tr>
+	    <td class="norm-head" id="personal-info">Client Contact Person Details</td>
+	    <td></td>
+	  </tr>
+
+	  <tr>
+	   <td class="leftGray" width='55%'> Name<span class="mandatory">*</span>:</td>
+	   <td>
+			<%= f.fields_for "client_contact_person", @project.client_contact_person do |cp| %>
+				<%= cp.text_field :name, :class=> "txtfield", :maxlength => "100" %>
+				<%= cp.hidden_field :user_type, :value => "client contact person" %>
+			<% end %>
+	   </td>
+	  </tr>
+
+	<tr>
+	  <td class="leftGray" width='55%'> Email<span class="mandatory">*</span>:</td>
+	  <td>
+			<%= f.fields_for "client_contact_person", @project.client_contact_person do |cp| %>
+				<%= cp.text_field :email, :class=> "txtfield", :maxlength => "100" %>
+			<% end %>
+		</td>
+	</tr>
+
+	<tr>
+	  <td class="leftGray" width='55%'> Phone:</td>
+	  <td>
+			<%= f.fields_for "client_contact_person", @project.client_contact_person do |cp| %>
+				<%= cp.text_field :phone, :class=> "txtfield", :maxlength => "100" %>
+			<% end %>
+		</td>
+	</tr>
+
+	<tr>
+	  <td class="leftGray" width='55%'> Address:</td>
+	  <td>
+			<%= f.fields_for "client_contact_person", @project.client_contact_person do |cp| %>
+				<%= cp.text_area :address, :class=> "txtfield", :maxlength => "100" %>
+			<% end %>
+		</td>
+	</tr>
+
+	  <tr>
+	    <td class="norm-head" id="personal-info">Client Society Contact Person Details</td>
+	    <td></td>
+	  </tr>
+
+	  <tr>
+	   <td class="leftGray" width='55%'> Name<span class="mandatory">*</span>:</td>
+	   <td>
+			<%= f.fields_for "class_society_contact_person", @project.class_society_contact_person do |cp| %>
+				<%= cp.text_field :name, :class=> "txtfield", :maxlength => "100" %>
+				<%= cp.hidden_field :user_type, :value => "class society contact person" %>
+				
+			<% end %>
+	   </td>
+	  </tr>
+
+	<tr>
+	  <td class="leftGray" width='55%'> Email<span class="mandatory">*</span>:</td>
+	  <td>
+			<%= f.fields_for "class_society_contact_person", @project.class_society_contact_person do |cp| %>
+				<%= cp.text_field :email, :class=> "txtfield", :maxlength => "100" %>
+			<% end %>
+		</td>
+	</tr>
+
+	<tr>
+	  <td class="leftGray" width='55%'> Phone:</td>
+	  <td>
+			<%= f.fields_for "class_society_contact_person", @project.class_society_contact_person do |cp| %>
+				<%= cp.text_field :phone, :class=> "txtfield", :maxlength => "100" %>
+			<% end %>
+		</td>
+	</tr>
+
+	<tr>
+	  <td class="leftGray" width='55%'> Address:</td>
+	  <td>
+			<%= f.fields_for "class_society_contact_person", @project.class_society_contact_person do |cp| %>
+				<%= cp.text_area :address, :class=> "txtfield", :maxlength => "100" %>
+			<% end %>
+		</td>
+	</tr>
+
+  
+  <tr>
+     <td class="leftGray"></td>
+	 <td>
+	     <button class="actionbutton " onclick="history.go(-1)" type="button"><span><span class=''>Cancel</span></span></button>
+		 <% text = @project.new_record? ? "Create" : "Update" %>
+		 <%= f.submit text, :id=>"submit_create_edit_team", :class => "actionbutton actionblue" %>
+	  </td>
+  </tr>
+</table>
+	</div>

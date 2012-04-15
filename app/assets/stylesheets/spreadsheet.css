@@ -3,6 +3,7 @@ html, body {
     font-size: 11px;
     line-height: 14px;
     margin: 0;
+    height:100%;
 }
 .page {
     background-color: #FFFFFF;
@@ -133,9 +134,7 @@ a:focus {
 .page-gap-new {
     padding: 0 15px;
 }
-.foot {
-    height: 125px;
-}
+
 .new-mangoapps .page #portal-footer.getting-started-page {
     width: 980px;
 }
@@ -684,9 +683,6 @@ h1.title a, h1.title a:visited, h1.title a:hover {
 }
 table, table tr, table tr td, table tr th {
     border: 0 none;
-}
-.body {
-    padding-bottom: 60px;
 }
 .refreshMessage {
     -moz-border-bottom-colors: none;
@@ -5013,6 +5009,13 @@ tr.action-rollhover .action-list .actionbutton {
     text-align: center;
     white-space: nowrap;
 }
+
+tr.action-rollhover .action-list .linkbutton {
+    min-width: 55px;
+    text-align: center;
+    white-space: nowrap;
+}
+
 tr.action-rollhover .action-list, .userDetailsbox .action-list {
     visibility: hidden;
 }
@@ -7014,4 +7017,15 @@ table.fc-border-separate {
 }
 .calender-bg-pro {
     background: url("https://gp1.wac.edgecastcdn.net/8030B8/engageexpress/ce/pulse/images/mangotask/drop-bg.jpg") repeat-x scroll 0 0 transparent !important;
+}
+.content table tr td textarea, #tags {
+    height: 76px;
+    padding: 4px;
+    vertical-align: middle;
+    width: 324px;
+}
+.content table tr td .txtfield {
+    padding: 4px;
+    vertical-align: middle;
+    width: 324px;	
 }

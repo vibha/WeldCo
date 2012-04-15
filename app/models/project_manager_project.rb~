@@ -1,0 +1,6 @@
+class ProjectManagerProject < ActiveRecord::Base
+
+  belongs_to :project
+  belongs_to :project_manager
+  
+end

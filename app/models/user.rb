@@ -1,12 +1,33 @@
 class User < ActiveRecord::Base
   authenticates_with_sorcery!
   
-  attr_accessible :loginId, :password, :password_confirmation
+  belongs_to :company
+  
+  has_many :projects, :through => :project_manager_projects_records
+  has_many :project_manager_projects_records
+  
+  #belongs_to :client
+  #belongs_to :contact_person
+    
+  scope :admins, :conditions => "role='admin'"
+  
+ # attr_accessible :password, :password_confirmation
+  
+ # has_attached_file :client_logo
   
   validates_confirmation_of :password
-  validates_presence_of :password, :on => :create
-  validates_presence_of :email, :loginId
-  validates_uniqueness_of :email, :loginId
+#  validates_presence_of :password, :on => :create
+  validates_presence_of :name, :email
+  validates_uniqueness_of :email
+  validates_length_of :password,
+                      :within => PASSWORD_MIN_LENGHT..PASSWORD_MAX_LENGHT,
+                      :too_short => "must be atleast %d characters long",
+                      :too_long => "must be less than %d characters",
+                      :unless => Proc.new{|u| u.password.blank?}
+  validates_format_of :email,
+                      :with => EMAIL_REG,
+                      :unless => Proc.new{|u| u.email.blank?}            
+
   
   
   

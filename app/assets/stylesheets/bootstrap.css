@@ -1473,9 +1473,10 @@ table .span24 {
     border-left: 4px solid transparent;
     border-right: 4px solid transparent;
     border-top: 4px solid #000000;
-    content: "";
+    content: "↓";
     display: inline-block;
     height: 0;
+    text-indent: -99999px;
     opacity: 0.3;
     vertical-align: top;
     width: 0;
@@ -1484,7 +1485,7 @@ table .span24 {
     margin-left: 2px;
     margin-top: 8px;
 }
-.dropdown:hover .caret, .open.dropdown .caret {
+.dropdown:hover .caret, .open.dropdown .caret, .nav .selected .caret {
     opacity: 1;
 }
 .dropdown-menu {

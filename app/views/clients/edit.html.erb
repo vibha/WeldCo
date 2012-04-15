@@ -1,0 +1,15 @@
+<%= render :partial => 'shared/sub_nav', :locals => { :selected => "editClient", :client => @client } %>
+<div id="add_room_cont" class="content">
+	<%= form_for @client, :html => {:id => "create_edit_team"} do |f| %>
+	<% if @client.errors.any? %>	
+	<div id="flash">
+		<div id="flash_error">
+	      <% @client.errors.full_messages.each do |msg| %>
+	        <div class="errortxt" style="margin-left:12px;"><%= msg %></div>
+	      <% end %>
+		</div>
+	</div>
+  	<% end %>
+	<%= render :partial => 'form', :locals => {:f => f} %>
+	<% end %>
+</div>

@@ -1,0 +1,35 @@
+<%= render :partial => 'sub_nav', :locals => { :selected => "newClient" } %>
+
+<div id="add_room_cont" class="content">
+	<%= form_for @client, :html => {:id => "create_edit_team"} do |f| %>
+	<% if @client.errors.any? %>	
+	
+	
+	<div class="flash_notice" id="notice" style="display:none">
+      <a href="javascript://" class="close">x</a>
+      
+    </div>
+
+    <div class="error_status" id="error" style="display:none">
+      <a href="javascript://" class="close">x</a>
+      
+    </div>
+
+    <div class="error_status" id="failure" style="display:none">
+      <a href="javascript://" class="close">x</a>
+      
+    </div>
+    
+    
+	<div id="flash">
+		<div id="flash_error">
+	      <% @client.errors.full_messages.each do |msg| %>
+	        <div class="errortxt" style="margin-left:12px;"><%= msg %></div>
+	      <% end %>
+		</div>
+	</div>
+  	<% end %>
+	
+	<%= render :partial => 'form', :locals => {:f => f} %>
+	<% end %>
+</div>

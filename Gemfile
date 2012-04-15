@@ -6,14 +6,15 @@ gem 'rails', '3.2.2'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'mysql2'
-
+gem 'execjs'
+gem 'therubyracer'
 
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
-
+  
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer'
 
@@ -35,11 +36,14 @@ gem 'jquery-rails'
 # gem 'capistrano'
 
 # To use debugger
-# gem 'ruby-debug19', :require => 'ruby-debug'
+gem 'linecache19', '0.5.13', :path => "/usr/local/lib/ruby/gems/1.9.1/gems/linecache19-0.5.13"  
+gem 'ruby-debug-base19', '0.11.26', :path => "/usr/local/lib/ruby/gems/1.9.1/gems/ruby-debug-base19-0.11.26"
+gem 'ruby-debug19', :require => 'ruby-debug'
 
 gem 'sorcery'
-gem 'linecache19', '0.5.13'
 
-gem 'ruby-debug-base19', '0.11.26'
+#gem 'ruby-debug-base19', '0.11.26'
 
-gem 'ruby-debug19', :require => 'ruby-debug'
+#gem 'ruby-debug19', :require => 'ruby-debug'
+
+gem 'paperclip', :git => 'git://github.com/thoughtbot/paperclip.git'

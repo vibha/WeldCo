@@ -1,7 +1,18 @@
 Weldco::Application.routes.draw do
+  resources :projects
+
+  resources :companies
+
+  get "password_resets/create"
+
+  get "password_resets/edit"
+
+  get "password_resets/update"
+
   get "logout" => "sessions#destroy", :as => "logout"
   get "login" => "sessions#new", :as => "login"
   get "signup" => "users#new", :as => "signup"
+  get "projects/:id/get_json", :controller=> "projects", :action => "get_json"
   
   resources :users
   
@@ -10,8 +21,10 @@ Weldco::Application.routes.draw do
   resources :home
     
   resources :clients
+  
+  resources :password_resets
     
-  root :to => "home#index"
+  root :to => "clients#index"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -1,0 +1,106 @@
+<%= render :partial => 'shared/sub_nav', :locals => { :selected => "allClients" } %>
+<div class="body InnerbodyExt " style="overflow: visible">
+ <div class="full-page-div">
+     <div class="page-gap">
+
+	<!-- message box -->
+
+  <div class="float_right top-colleagues">
+	<% link = "<span><span><span class='invite_member'>Add new clients</span></span></span>"%>
+	<%= link_to raw(link), new_client_path, :class => "uppercase-text actionbutton actionblue" %>
+  </div>
+
+
+<div class="allUsers clearfix">
+  <div class="clearfix bottom_spacing10">
+    
+    
+  </div>
+  
+    
+      
+<div class="colleague_list_view">
+  <table width="100%">
+
+    <colgroup>
+      <col style="width:43%;"></col>
+      <col style="width:23%;"></col>
+      <col style="width:12%;"></col>
+      <col style="width:12%;"></col>
+      <col style="width:10%;"></col>
+    </colgroup>
+
+    <tr>
+      <th>
+        Clients
+      </th>
+      <th>
+		Contact Person
+	  </th>
+      <th>City</th>
+      <th>Website</th>
+      <th></th>
+    </tr>
+
+    <!-- Remove the row in the I'm Following sub tab when user unfollows someone -->
+    
+    
+      <% @clients.each do |c| %>
+
+        <tr class="colleague_row  action-rollhover ">
+
+          <td>
+            <div class="relative left right_spacing">
+              
+              <table class="small_img_box">
+                <tr>
+                   <%= image_tag(c.logo.url(:thumb))  %>
+                </tr>
+              </table>
+              
+              
+              <!-- Markup for presence plugin  -->
+              <div class="user-presence-sect">
+                <div class="mango-add-presence-plugin mango-presence-plugin-container" type="I" buddy_external_id="398578">
+                </div>
+              </div>
+              <!-- end markup -->
+            </div>
+            <div class="userDetails" style="line-height:16px !important;">
+			  <p>
+				<% string = "<span style='font-size:12px;'>" + c.name.titleize + "</span>" %>
+				<%= link_to raw(string), client_path(c), :class => "bluetext uploader_name" %>
+			  </p>
+              <p>
+                <span class="filename">Email: </span><span class="user_status userDesignation"><%= c.company_email  %></span>
+                
+              </p>
+              <p>
+                
+                <span class="filename">Phone: </span><span class="user_status userDesignation"><%= c.phone  %></span>
+              </p>
+            </div>
+          </td>
+
+          <td><span class="user_status"><%= c.contact_person.name.titleize %></span></td>
+          <td><span class="bluetext"><%= c.city  %></span></td>
+          <td><span class="bluetext"><%= c.website %></span></td>
+          <td><span class="filename">
+                <div class="action-list">
+					<%= button_to "Delete", c, :method=>:delete, :class=>"fu x_button follow actionbutton actionblue ", :confirm => "Are you sure" %><br/>
+					<span class="filename">
+						<% text = "<span>" + "Edit" + "</span>" %>
+						<%= link_to raw(text), edit_client_path(c), :class=>"actionbutton x_button linkbutton" %>	    				
+					<span>
+                </div>
+              </span>
+          </td>
+        </tr>
+     <% end %>
+  </table>
+</div>
+
+</div>
+          </div>
+        </div>
+</div>

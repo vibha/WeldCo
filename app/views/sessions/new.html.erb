@@ -17,21 +17,26 @@
   <div id="" class="content-wrapper">
     <div id="login_box" class="">
 	
-		<%= form_tag sessions_path, {:id => "frm_login"} do %>
+		<%= form_tag sessions_path, {:id => "frm_login"} do |f| %>
 	
       <!-- <form method="post" action="#" id="frm_login" no-ajax="true"> -->
        <!-- <input type="hidden" id="user_email_id" name="user_email_id" value=""/> -->
         <div>
           <h2 class="login_title">Log in to your<span class="domain_name"> WeldCo!!</span> user account</h2>
           <hr class="top-seperator"/>
-          <div id="gbl_error_signin" class="error_status" style="display: none"></div>
+          <div id="gbl_error_signin" class="error_status" style="display: none">
+			<% flash.each do |name, msg| %>
+		  		<%= content_tag :div, msg, :id => "flash_#{name}" %>
+			<% end %>
+          	<%#= error_messages_on 'user' %>
+          </div>
           <p class="userId_box">
 	
 			<%#= label_tag :email, nil, :class => "user_id_pwd" %>
 	
             <label for="emailId" class="user_id_pwd">Login ID</label>
 
-			<%= text_field_tag :loginId, params[:loginId], {:maxlength => 60, :class => "txtField", :id => "user_id" } %>
+			<%= text_field_tag :email, params[:email], {:maxlength => 60, :class => "txtField", :id => "user_id" } %>
 
        <!--   <input type="text" maxlength="60" id="user_id" name="user_id" class="txtField" value="" /> -->
 
@@ -46,14 +51,16 @@
 
 <!--            <input type="password" maxlength="20" id="password" name="password" value="" class="txtField" /><br/> -->
 
-            <a class="lightBlue_link fgt_pwd" href="/ce/pulse/user/login/show_forgot_password">Forgot Password?</a>
-
+			<%= link_to "Forgot Password?", new_password_reset_path, :html => {:class=>"lightBlue_link fgt_pwd"} %>
+       <!--     <a class="lightBlue_link fgt_pwd" href="/ce/pulse/user/login/show_forgot_password">Forgot Password?</a> -->
+			<%#= render 'forgot_password_form' %>
+			
             <span class="clearfloat"></span>
           </p>
           <p class="userId_box chkbox" style="margin-top: 5px;">
             <span class="rcContainer">
 				<%= check_box_tag :remember_me, 1, params[:remember_me], {:id=> "remember_me", :class => "rc remember_me", :checked => "checked"} %>
-				<%= label_tag :remember_me %>
+				<%= label_tag :keep_me_logged_in, "Keep me logged in", {:class=>"keep_logged_in"} %>
 	
             <!--  <input type="checkbox" id="remember_me" name="remember_me" class="rc remember_me" checked="checked"  />
               <label for="remember_me" class="keep_logged_in">Keep me logged in</label> -->
@@ -61,10 +68,11 @@
             <span class="clearfloat"></span>
           </p>
           <p class="signin_btn">
-		   
-				<%= submit_tag "Log in", {:class => "actionbutton loginBtn actionblue"} %>
+		   		<%# @str = "<span><span class=''>Login</span></span>" %>
+		
+				<%#= submit_tag raw(@str), {:class => "actionbutton loginBtn actionblue"} %>
 	
-          <!--  <button class="actionbutton loginBtn actionblue" type="submit"><span><span class=''>Login</span></span></button> -->
+          <button class="actionbutton loginBtn actionblue" type="submit"><span><span class=''>Login</span></span></button>
           </p>          
         </div>
 		<% end %>

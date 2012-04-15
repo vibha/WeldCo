@@ -1,0 +1,9 @@
+class CreateProjectsSystems < ActiveRecord::Migration
+  def change
+    create_table :projects_systems do |t|
+      t.string :project_id
+      t.string :system_id
+      t.timestamps
+    end
+  end
+end

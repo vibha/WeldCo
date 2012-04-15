@@ -1,0 +1,6 @@
+class RenameColumnTypeToUserTypeInUsers < ActiveRecord::Migration
+  def change
+    rename_column :table_name, :old_column, :new_column
+  end
+
+end

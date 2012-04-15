@@ -1,0 +1,22 @@
+<div id="content">
+	<div id="forgot_pwd_box">
+		<p id="forgot_pwd_status">&nbsp;</p>
+		<%= form_tag password_resets_path, :method => :post, :id=> "forgot_password" do %>
+		<div id="gbl_error_signin" class="error_status" style="display: none">
+		    <% flash.each do |name, msg| %>
+		        <%= content_tag :div, msg, :id => "flash_#{name}" %>
+		    <% end %>
+		</div>
+		   <fieldset class="clearfix">
+			  <legend style="border:2px">Email ID</legend>
+			  <%= text_field_tag :email, "", {:class=> "textbox required"} %> 
+			  <em class="error"></em>
+			  <p>Your password will be sent at this email ID. Please enter a valid email ID</p>
+		    </fieldset>
+		    <div>&nbsp;</div>
+		    <div class="input_cont center", style="margin:11px 773px 12px 7px">
+			   <%= submit_tag "Reset my password!", {:class => "actionbutton actionblue", :id => "get_my_pwd_bt"} %>
+		    </div>
+		<% end %>
+	</div>
+</div>

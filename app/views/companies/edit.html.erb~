@@ -1,0 +1,4 @@
+<%= render :partial => 'shared/sub_nav', :locals => { :selected => "editCompany", :company =>  } %>
+
+<%= render 'form' %>
+

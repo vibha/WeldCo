@@ -1,0 +1,137 @@
+<table cellpadding="0" cellspacing="0" border="0" id="create_project_tbl" class="twoColumnTbl">      
+
+  <tr>
+    <td class="leftGray" width='55%'>Client Name: <span class="mandatory">*</span></td>
+    <td>
+		<%= f.text_field :name, :class=> "txtfield", :maxlength => "100" %>
+	</td>
+  </tr>
+    
+    <tr>
+      <td class="leftGray">Address:<span class="mandatory">*</span></td>
+      <td>
+    	 <%= f.text_area :address, :class=> "txtfield", :maxlength => "100" %>
+	  </td>
+  	</tr>
+  
+  <tr>
+    <td class="leftGray" width='55%'>Zip Code:<span class="mandatory">*</span></td>
+    <td>
+	   <%= f.text_field :zip_code, :class=> "txtfield", :maxlength => "100" %>
+	</td>
+  </tr>
+
+  <tr>
+    <td class="leftGray" width='55%'>City:<span class="mandatory">*</span></td>
+    <td>
+		<%= f.text_field :city, :class=> "txtfield", :maxlength => "100" %>
+	</td>
+  </tr>
+
+  <tr>
+    <td class="leftGray" width='55%'>State:<span class="mandatory">*</span></td>
+    <td>
+		<%= f.text_field :state, :class=> "txtfield", :maxlength => "100" %>
+	</td>
+  </tr>
+
+  <tr>
+    <td class="leftGray" width='55%'>Country:<span class="mandatory">*</span></td>
+    <td>
+	    <%= f.text_field :country, :class=> "txtfield", :maxlength => "100" %>
+	</td>
+  </tr>
+
+  <tr>
+    <td class="leftGray" width='55%'>Phone:<span class="mandatory">*</span></td>
+    <td>
+	    <%= f.text_field :phone, :class=> "txtfield", :maxlength => "100" %>
+	</td>
+  </tr>
+
+  <tr>
+    <td class="leftGray" width='55%'>Fax:</td>
+    <td>
+		<%= f.text_field :fax, :class=> "txtfield", :maxlength => "100" %>
+	</td>
+  </tr>
+  
+  <tr>
+    <td class="leftGray" width='55%'>Website:</td>
+    <td>
+		<%= f.text_field :website, :class=> "txtfield", :maxlength => "100" %>
+	</td>
+  </tr>
+
+  <tr>
+    <td class="leftGray" width='55%'>Company Email<span class="mandatory">*</span>:</td>
+    <td>
+		<%= f.text_field :company_email, :class=> "txtfield", :maxlength => "100" %>
+	</td>
+  </tr>
+
+  <tr>
+    <td class="leftGray" width='55%'>Company Logo<span class="mandatory">*</span>:</td>
+    <td>
+		<%= f.file_field :logo %>
+	</td>
+  </tr>
+
+  <tr>
+    <td class="norm-head" id="personal-info">Contact Person Details</td>
+    <td></td>
+  </tr>
+
+  <tr>
+   <td class="leftGray" width='55%'> Contact Person Name<span class="mandatory">*</span>:</td>
+   <td>
+		<%= f.fields_for "contact_person", @client.contact_person do |cp| %>
+			<%= cp.text_field :name, :class=> "txtfield", :maxlength => "100" %>
+		<% end %>
+   </td>
+  </tr>
+
+<tr>
+  <td class="leftGray" width='55%'> Email<span class="mandatory">*</span>:</td>
+  <td>
+		<%= f.fields_for "contact_person", @client.contact_person do |cp| %>
+			<%= cp.text_field :email, :class=> "txtfield", :maxlength => "100" %>
+		<% end %>
+	</td>
+</tr>
+
+<tr>
+  <td class="leftGray" width='55%'> Phone<span class="mandatory">*</span>:</td>
+  <td>
+		<%= f.fields_for "contact_person", @client.contact_person do |cp| %>
+			<%= cp.text_field :phone, :class=> "txtfield", :maxlength => "100" %>
+		<% end %>
+	</td>
+</tr>
+
+<tr>
+  <td class="leftGray" width='55%'> Address<span class="mandatory">*</span>:</td>
+  <td>
+		<%= f.fields_for "contact_person", @client.contact_person do |cp| %>
+			<%= cp.text_area :address, :class=> "txtfield", :maxlength => "100" %>
+		<% end %>
+	</td>
+</tr>
+
+  <tr>
+    <td class="leftGray">Comment:</td>
+    <td>
+		<%= f.text_area :comment, :class=> "txtfield", :maxlength => "100" %>
+	  </td>
+  </tr>
+
+  <tr>
+     <td class="leftGray"></td>
+	 <td>
+	     <button class="actionbutton " onclick="history.go(-1)" type="button"><span><span class=''>Cancel</span></span></button>
+		 <% text = @client.new_record? ? "Create" : "Update" %>
+		 <%= f.submit text, :id=>"submit_create_edit_team", :class => "actionbutton actionblue" %>
+	  </td>
+  </tr>
+</table>
+	</div>

@@ -1,0 +1,7 @@
+<% [:message,:error,:notice].each do |f| -%>
+	<% if flash[f] -%>
+	  <div id = "flash_<%= f.to_s -%>" class = "flash" >
+	  	<%= flash[f] -%>
+	  </div>
+  <% end -%>
+<% end -%>

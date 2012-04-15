@@ -1,0 +1,50 @@
+<div id="add_room_cont" class="content">
+	<%= form_for @company, :html => {:id => "create_edit_team", :multipart => true} do |f| %>
+	<% if @company.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@company.errors.count, "error") %> prohibited this company from being saved:</h2>
+
+      <ul>
+      <% @company.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+    <table cellpadding="0" cellspacing="0" border="0" id="create_project_tbl" class="twoColumnTbl">      
+
+      <tr>
+        <td class="leftGray" width='55%'>Company Name: <span class="mandatory">*</span></td>
+        <td>
+			<%= f.text_field :name, :class=> "txtfield" %>
+		</td>
+      </tr>
+
+        <tr>
+        <td class="leftGray" width='55%'>Company Logo<span class="mandatory">*</span>:</td>
+        <td>
+			<%= f.file_field :logo, :class=> "txtfield", :maxlength => "100" %>
+		</td>
+      </tr>
+	
+
+      <tr>
+        <td class="leftGray" width='55%'> Logo Title<span class="mandatory">*</span>:</td>
+        <td>
+			<%= f.text_field :logo_title, :class=> "txtfield", :maxlength => "100" %>
+		</td>
+      </tr>
+
+	  <tr>
+	     <td class="leftGray"></td>
+		 <td>
+		     <button class="actionbutton " onclick="history.go(-1)" type="button"><span><span class=''>Cancel</span></span></button>
+		     <% text = @company.new_record? ? "Create" : "Update" %>
+			 <%= f.submit text, :id=>"submit_create_edit_team", :class => "actionbutton actionblue" %>
+		  </td>
+	  </tr>
+	</table>
+		</div>
+		<% end %>
+</div>

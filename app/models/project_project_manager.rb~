@@ -1,0 +1,4 @@
+class ProjectProjectManager < ActiveRecord::Base
+  
+  
+end

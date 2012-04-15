@@ -1,0 +1,68 @@
+ <div style="float:left;margin-top:40px;margin-left:60px;width:90%;color:#333333;font-size:18px;font-style:normal;">
+	<div class="show_page_wrapper content-page-title with-button bottom_spacing20" style="padding-bottom:17px;">
+		<%#= image_tag(@client.logo.url(:thumb))  %>
+		<span>Client Info:<%#= @client.name %></span>
+		<div class="float_right top-colleagues">
+			<% link = "<span><span><span class='invite_member'>Add new clients</span></span></span>"%>
+			<%= link_to raw(link), new_client_path, :class => "uppercase-text actionbutton actionblue" %>
+	  </div>
+	</div>
+	
+	<div id="right_wiki_content" class="right rhs_view show_page foldable-right wiki_right_section" >
+		<div id="contentCol" class="wiki-dashboard-content" style="width:866px;">
+			<div class="wikis-title-container bottom-10" style="padding:31px;height:50px;">
+				<div id="wikis_details" class="message-container" style="width:390px;">
+					<div class="title">
+						<span><%= image_tag(@client.logo.url(:thumb))  %>
+						<span class="bluetext title-font"><%= @client.name %></span><br/>						
+					</div>
+				</div>
+				<div class="float_right">
+					<div class="left">
+						<%= link_to "Edit Client", edit_client_path(@client), :class=>"edit_wiki_links actionbutton actionblue submit-button" %>
+					</div>
+				</div>					
+			</div>
+			<div class="clearfloat"></div>
+			
+			<table style="margin-top:56px;margin-left:43px;">
+				<tr><td><h4 class="bluetext title-font">Address:</h4></td><td><span id="wikis_details"><span class="created">&nbsp;&nbsp;<%= @client.address %></span></span></td></tr>
+				<tr><td><h4 class="bluetext title-font">Company Email:</h4></td><td><span id="wikis_details"><span class="created">&nbsp;&nbsp;<%= @client.company_email %></span></span></td></tr>
+				<tr><td><h4 class="bluetext title-font">ZipCode:</h4></td><td><span id="wikis_details"><span class="created">&nbsp;&nbsp;<%= @client.zip_code %></span></span></td></tr>
+				<tr><td><h4 class="bluetext title-font">City:</h4></td><td><span id="wikis_details"><span class="created">&nbsp;&nbsp;<%= @client.city %></span></span></td></tr>
+				<tr><td><h4 class="bluetext title-font">State:</h4></td><td><span id="wikis_details"><span class="created">&nbsp;&nbsp;<%= @client.state %></span></span></td></tr>
+				<tr><td><h4 class="bluetext title-font">Country:</h4></td><td><span id="wikis_details"><span class="created">&nbsp;&nbsp;<%= @client.country %></span></span></td></tr>
+				<tr><td><h4 class="bluetext title-font">Phone:</h4></td><td><span id="wikis_details"><span class="created">&nbsp;&nbsp;<%= @client.phone %></span></span></td></tr>
+				<tr><td><h4 class="bluetext title-font">Fax:</h4></td><td><span id="wikis_details"><span class="created">&nbsp;&nbsp;<%= @client.fax %></span></span></td></tr>
+				<tr><td><h4 class="bluetext title-font">Website:</h4></td><td><span id="wikis_details"><span class="created">&nbsp;&nbsp;<%= @client.website %></span></span></td></tr>
+				
+			</table>
+			
+			<div class="clearfloat"></div>
+			<div id="attachemt_wikis_wrapper" style="margin-top:72px;">
+				<div id="wikis_attachment">
+					<div class="content-page-title bottom-15 bottom_spacing20">
+						<em>Contact Person Details:</em>
+					</div>
+				</div>
+			</div>
+			<div class="clearfloat"></div>
+			
+			
+			<div class="wikis-title-container bottom-10" style="padding:31px;height:30px;border-top:1px solid #CCCCCC">
+				<div id="wikis_details" class="message-container" style="width:390px;">
+					<div class="title">
+						<span class="bluetext title-font"><%= @client.contact_person.name %></span><br/>
+					</div>
+				</div>
+			</div>
+			
+			<table style="margin-top:46px;margin-left:80px;">
+				<tr><td><h4 class="bluetext title-font">Email:</h4></td><td><span id="wikis_details"><span class="created">&nbsp;&nbsp;<%= @client.contact_person.email %></span></span></td></tr>
+				<tr><td><h4 class="bluetext title-font">Phone:</h4></td><td><span id="wikis_details"><span class="created">&nbsp;&nbsp;<%= @client.contact_person.phone %></span></span></td></tr>
+				<tr><td><h4 class="bluetext title-font">Address:</h4></td><td><span id="wikis_details"><span class="created">&nbsp;&nbsp;<%= @client.contact_person.address %></span></span></td></tr>
+			</table>
+		</div>
+	</div>
+		
+ </div>

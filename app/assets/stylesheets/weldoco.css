@@ -3953,6 +3953,7 @@ h3.title {
 }
 .userId_box.chkbox span.rcContainer {
     padding-bottom: 3px;
+	width:128px;
 }
 .userId_box {
     line-height: 140%;
@@ -4200,6 +4201,7 @@ hr.top-seperator {
 }
 .signin_btn {
     margin-top: 35px;
+	width:106px;
 }
 form p {
     clear: both;

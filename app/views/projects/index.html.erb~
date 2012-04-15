@@ -1,0 +1,104 @@
+<%= render :partial => 'shared/sub_nav', :locals => { :selected => "allProjects" } %>
+<div id="shell-header">
+		<div id = 'flash'><%= render :partial => 'shared/flash', :object => flash -%></div>
+			<div style="margin-bottom: 15px;overflow: hidden;">
+		  	<% if current_user%>
+			  	<h1 id="domain_logo_img">
+			  			<%= image_tag current_user.company.logo.url, {:size => "70x90" } %> 
+			  	</h1>
+			  <% end %>
+		  </div>
+		  <div class="clearfloat"></div>
+		  <!-- submenu section -->
+		  <div id="sub-navigation">
+				<% if current_user %>
+			  	<div id="clients_subnav">
+						<ul>
+							<li><%= link_to "My Projects", projects_path, {:class=> "selected"} %></li>
+							<li><%= link_to "New Project", new_project_path %></li>
+						</ul>
+			 		</div>
+				<% end %>
+		  </div>
+	</div>
+</div>
+<div class="body InnerbodyExt " style="overflow: visible">
+ <div class="full-page-div">
+          <div class="page-gap">
+
+
+  <div class="float_right top-colleagues">
+	
+	<% link = "<span><span><span class='invite_member'>Add new projects</span></span></span>"%>
+	<%= link_to raw(link), new_project_path, :class => "uppercase-text actionbutton actionblue" %>
+	
+  </div>
+
+
+<div class="allUsers clearfix">
+  <div class="clearfix bottom_spacing10">
+    
+    
+  </div>
+  
+<div class="colleague_list_view">
+  <table width="100%">
+
+    <colgroup>
+      <col style="width:10%;"></col>
+      <col style="width:10%;"></col>
+      <col style="width:10%;"></col>
+      <col style="width:10%;"></col>
+      <col style="width:10%;"></col>
+
+    </colgroup>
+
+    <tr>
+      <th>
+        Project
+      </th>
+      <th>
+		Client
+	  </th>
+      <th>Project Manager</th>
+      <th>Welding Coordinator</th>
+      <th></th>
+    </tr>
+    
+    
+      <% @projects.each do |c| %>
+
+        <tr class="colleague_row  action-rollhover ">
+
+          <td>
+            <div class="userDetails" style="line-height:16px !important;margin:0 0 0 4px;">
+			  <p>
+				<% string = "<span style='font-size:12px;'>" + c.name.titleize + "</span>" %>
+				<%= link_to raw(string), project_path(c), :class => "bluetext uploader_name" %>
+			  </p>
+            </div>
+          </td>
+
+          <td><span class="user_status"><%= c.client.name.titleize if c.client %></span></td>
+          <td><span class="bluetext"><%= c.project_manager.name if c.project_manager %></span></td>
+          <td><span class="bluetext"><%= c.welding_coordinator.name.titleize if c.welding_coordinator %></span></td>
+
+          <td><span class="filename">
+                <div class="action-list">
+					<%= button_to "Delete", c, :method=>:delete, :class=>"fu x_button follow actionbutton actionblue ", :confirm => "Are you sure" %><br/>
+					<span class="filename">
+						<% text = "<span>" + "Edit" + "</span>" %>
+						<%= link_to raw(text), edit_project_path(c), :class=>"actionbutton x_button linkbutton" %>	    				
+					<span>
+                </div>
+              </span>
+          </td>
+        </tr>
+     <% end %>
+  </table>
+</div>
+
+</div>
+          </div>
+        </div>
+</div>

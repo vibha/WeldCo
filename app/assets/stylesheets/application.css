@@ -11,3 +11,30 @@
  *= require_self
  *= require_tree .
 */
+
+/* style for flash messages/erros/notice */
+.flash{padding: 5px;text-align:center; margin: 5px; background-color: #f0f0f0; font: bold medium sans-serif; float: none; margin: 9px 25px -31px 0px; width: 968px; }
+#application #flash {  text-align: center; font-weight: bold; }
+#flash #flash_error { color:#fff; border: 1px solid #CC9999; background-color: #CC0000; }
+#flash_notice { color:#006600; border: 1px solid #99CC99; background-color: #E2F9E3}
+#flash #flash_message { color:#006600; border: 1px solid #99CC99; background-color: #E2F9E3}
+#application  #flash_error, #application  #flash_notice, #application  #flash_message { padding: 5px; }
+
+/* style for error messages */
+.fieldWithErrors input, .fieldWithErrors textarea{ padding: 2px; border: 3px solid red; }
+#errorExplanation { color:#000; width:500px; margin:20px 0px; overflow:hidden; line-height:20px; border: 1px solid #bbb; }
+#errorExplanation h2 { color: #fff; padding: 5px; font-size: 14px; font-weight: normal; background-color: #CC0000; border-bottom:1px solid #bbb; }
+#errorExplanation p { padding: 5px; font-size: 14px; margin-top: 10px; }
+#errorExplanation ul li { width: 100%; 	font-size: 12px; list-style: square; margin: 2px 10px 2px 30px; }	
+
+caption, th {
+	text-align:left;
+}
+
+.linkbutton {
+	width:12px;
+}
+.current{
+  display:block;
+}
+

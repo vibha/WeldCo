@@ -7,12 +7,12 @@ class SessionsController < ApplicationController
   end
   
   def create
-    user = login(params[:loginId], params[:password], params[:remember_me])
+    user = login(params[:email], params[:password], params[:remember_me])
     if user
       redirect_back_or_to root_url, :notice => "Logged in!"
     else
-      flash.now.alert = "LoginId or password was invalid"
-      render :new
+      flash[:error] = "LoginId or password was invalid"
+      redirect_to login_path
     end
   end
   
